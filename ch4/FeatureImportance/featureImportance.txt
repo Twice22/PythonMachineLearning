@@ -1,0 +1,4 @@
+Another approach to select usefull features from a dataset is to use
+a random forest. The forest implementation in scikit-learn already
+collects feature importances for us so that we can access them via
+the feature_importances_ attribute.

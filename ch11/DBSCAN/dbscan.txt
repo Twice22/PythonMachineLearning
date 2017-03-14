@@ -1,0 +1,34 @@
+we will focus on the Density-based Spatial Clustering of Applications
+with Noise (DBSCAN).
+
+In DBSCAN, a special label is assigned to each sample (pt) using the
+following criteria
+
+	. A point is considered as core point if at least a specified number
+	  (MinPts) of neighboring points fall within the specified radius ɛ
+
+	. A border pt is a pt that has fewer neighbors than MinPts within ɛ,
+	  but lies within the ɛ radius of a core pt
+
+	. All other points are neither core nor border points are considered
+	  as noise points
+
+After labeling the pts, DBSCAN algo works like this
+
+	1 - Form a separate cluster for each core pt or a connected group of
+		core points (core pt are connected if they are no farther than ɛ)
+
+	2 - Assign each border pt to the cluster of its corresponding core pt
+
+
+Advantage over k-means :
+	- remove noise points
+	- clusters have not necessarily a spherical shape as in k-means
+
+Drawbacks :
+	- 2 hyperparameters to determine a priori (MinPts and ɛ)
+	- curse of dimensionality increases with the nb of features
+	  Note : this is also the case with clustering algo that use metric
+	  like k-means and hierarchical clustering
+
+see also spectral clustering (another category of clustering) in the pdf

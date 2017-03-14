@@ -1,0 +1,11 @@
+you can export the decision tree with export_graphviz module
+from sklearn.tree. Just take a look at the code sample. To
+visualize the newly generated .dot document we can use :
+
+graphviz from http://www.graphviz.org
+
+After having installed graphviz we can generate a png from
+the .doc file using this command line in the location where
+the .doc file is settled :
+
+> dot -Tpng tree.dot -o tree.png

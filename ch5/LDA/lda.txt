@@ -1,0 +1,40 @@
+LDA stands for Linear Discriminant Analysis and is a SUPERVISED
+(it uses the classes : vector y here) to process to data compression
+via linear discriminant analysis (see p139)
+
+LDA assumes that data is NORMALLY distributed, that classes have
+identical covariance matrices and that the features are 
+statistically independent of each other. However even if one or
+more of those assumptions are violated, LDA still works.
+
+key step of LDA :
+	
+	1 - Standardize the d-dimensional dataset (d = nb of features)
+
+	2 - for each class, compute the d-dimensional mean vector
+
+	3 - Construct the between-class scatter matrix Sb and the
+		within-class scatter matrix Sw.
+
+	4 - Compute the eigenvectors and corresponding eigenvalues of
+		the matrix (Sw)-1*Sb
+
+	5 - Choose the k eigenvectors that correspond to the k largest
+		eigenvalues to construct a dxk-dimensional transformation
+		matrix W ; the eigenvectors are the col of this matrix
+
+	6 - Project the samples onto the new feature subspace using the
+		transformation matrix W.
+
+
+to compute each mean vector m(i) with i being the class. (In our
+dataset there are 3 classes !) we process as following :
+
+m(i) = 1/n(i)*Σ(xϵD(i), c) x(m)
+
+Sum of all x from one specific class div by the number of pt in this
+class !
+
+So we get 3 mean-vectors (3 classes in this example) : m1, m2, m3 :
+
+with m(i) = [μ(i, feature1), μ(i, feature2), ...,μ(i, feature3)].T

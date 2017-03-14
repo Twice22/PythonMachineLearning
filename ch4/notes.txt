@@ -1,0 +1,5 @@
+in this chapter we will focus on :
+- removing and imputing missing values from the dataset
+- getting categorical data into shape for machine learning algo
+- selecting relevant features for the model construction
+

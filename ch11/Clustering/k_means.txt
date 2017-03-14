@@ -1,0 +1,43 @@
+in real-world applications of clustering, we do not have any ground
+thruth category info about those samples. Thus our goal is to group
+the samples based on their feature similarities, which can be achieved
+using the k-means algorithm that can be summarized by the following 4
+steps :
+
+	1 - Randomly pick k centroids from the sample points as initial
+		cluster centers.
+
+	2 - Assign each sample to the nearest centroid μ(j), j € {1, ..., k}
+
+	3 - Move the centroids to the center of the samples that were
+		assigned to it.
+
+	4 - Repeat the steps 2 and 3 until the cluster assignment do not
+		change or a user-defined tolerance or a maximum number of
+		iterations is reached.
+
+
+we mesure similarity between objects as the opposite of the distance
+where the distance is defined by :
+
+	d(x,y)² = Σ(xj -yj)² = ||x - y||² (norm L2)
+
+
+k-means algorithm is a simple optimization problem, an iterative approach
+for minimizing the within-cluster sum of squared errors (SSE) which is
+sometimes also called cluster inertia :
+
+	SSE = Σ(i=1..n)Σ(j=1..k) w(i,j)||x(i) - μ(j)||²
+
+	where μ(j) is the centroid for cluster j and :
+	w(i,j) = 1 if x(i) in cluster j, 0 otherwise.
+
+
+
+Drawbacks of k-means :
+	- need to specify the nb of clusters k a priori (if higher dim than
+	  2 it's not so obvious because we can't visualize data).
+
+	- clusters do not overlap and are not hierarchical.
+
+	- we asume there is at least one item in each cluster.

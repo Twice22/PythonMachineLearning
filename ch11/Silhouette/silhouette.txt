@@ -1,0 +1,22 @@
+silhouette plots is another way of quantified the quality of any cluster
+algorithm. It works like this :
+
+	1. Calculate the cluster cohesion a(i) as the average distance
+	   between a sample x(i) and all other points in the same cluster
+
+	2. Calculate the cluster separation b(i) from the next closest
+	cluster as the average distance between the sample x(i) and all
+	samples in the nearest cluster.
+
+	3. Calculate the silhouette s(i) as the difference between cluster
+	cohesion and separation divided by the greater of the two, as
+	shown here :
+
+		s(i) = (b(i) - a(i))/( max{b(i), a(i)})
+
+
+silhouette coefficient = 0 => cluster separation and cohesion are equal
+silhouette coefficient = 1 => ideal silhouette
+
+silhouette_samples is available in scikit-learn's metric modul
+and silhouette_scores can be imported

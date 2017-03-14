@@ -1,0 +1,10 @@
+to create a forest here are the steps :
+- randomly choose n samples from the training set with replacement
+- Grow a decision tree from that sample. At each node :
+	- Randomly select d features without replacement
+	- Split the node using the feature that provides the best
+	  split according to the objective fct, for instance, by
+	  maximazing the information gain.
+- Repeat the steps 1 to 2 k times.
+- Aggregate the prediction by each tree to assign the class label
+  by majority vote (see Ch5 for majority vote).

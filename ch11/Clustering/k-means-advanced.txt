@@ -1,0 +1,20 @@
+k-means drawback comes from the fact that the centroids are randomly
+chosen. To adress this issue we can use k-means++ and place the initial
+centroids far away from each other.
+
+The initialization in k-means++ can be summarized as follows :
+
+	1. Initialize an empty set M to store the k centroids being selected
+
+	2. Randomly choose the first centroids μ(j) from the input samples
+	   and assign it to M.
+
+	3. For each sample x(i) that is not in M, find the minimum square
+	   distance d(x(i), M)² to any of the centroids in M.
+
+	4. To randomly select the next centroid μ(p), use a weighted prob
+	   distribution equal to d(u(p), M)²/( Σ d(x(i),M)²)
+
+	5. Repeat steps 2 and 3 until k centroids are chosen.
+
+	6. Proceed with the classic k-means algorithm.

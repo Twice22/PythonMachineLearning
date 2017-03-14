@@ -1,0 +1,38 @@
+hard clustering :
+	- similar to k-means : each sample is assigned to ONE cluster
+
+soft clustering :
+	- example : fuzzy C-means (FCM)
+	- assign a sample to one or more clusters (with its probability)
+
+example, a membership vector in FCM could be represented as follows :
+
+			| μ(1) -> 0.1 |
+			| μ(2) -> 0.85|
+			| μ(3) -> 0.05|
+
+the sum of the memberships for a given sample is equal to 1.
+
+
+Here is the FCM algorithm :
+
+	1. Specify the number of k centroids and randomly assign the cluster
+
+	2. Compute the cluster centroids μ(j), j € {1,...,k}
+
+	3. Update the cluster memberships for each point.
+
+	4. Repeat steps 2 and 3 until the membership coefficients do not
+	   change or a user-defined tolerance or a max nb of iterations is
+	   reached.
+
+
+The objective function of FCM we minimize is :
+
+	Jm = Σ(i=1..n)Σ(j=1..k) w^(m(i,j))||x(i) - μ(j)||², m € [1, +inf[
+
+	where m is the fuzziness coefficient that controls the degree of
+	fuzziness.
+
+	the cluster membership proability itself is calculated with 
+	formula p319

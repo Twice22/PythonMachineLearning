@@ -1,0 +1,17 @@
+in K-fold cross-validation, we randomly split the training
+dataset into k folds without replacement, where k-1 fols are
+used for the training and one fold is used for testing 
+( for the model evaluation). see p176
+
+We repeated k times this procedure so that we obtain k models
+and performance estimates.
+
+We use k-fold cross-validation for model tuning, that is, finding
+the optimal hyperparameter values that yield a satisfying
+generalization performance. One we got thoses hyperparameter values
+we can retrain the model on the COMPLETE training set and obtain a
+final performance estimate using the independant test set.
+
+a improvement over the standard k-fold cross-validation approach is
+stratified k-fold cross-validation, which can yield better bias and
+variance estimates !

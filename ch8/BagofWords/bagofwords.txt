@@ -1,0 +1,98 @@
+remember (ch4) we should transform categorical data (words, strings)
+into a numerical form before training. We will use the bag-of-words
+model that allows us to represent text as numerical feature vectors.
+
+The idea is :
+
+	1 - create a vocabulary of unique tokens (words from the
+		entire set of documents)
+
+	2 - Construct a feature vector from each document that contains
+		the counts of how often word occurs in the particular doc.
+
+Obviously... the feature vectors with such technique will mostly
+be constituted with zeros. which is why we call them sparse vectors.
+
+
+# Note : see 1-gram, 2-gram, n-gram algorithm...
+# 1-gram of 'the sun is shining' will be a dict of :
+#		['the', 'sun', 'is', 'shining']
+# 2-gram of 'the sun is shining' will be a dict of :
+#		['the sun', 'sun in', 'is shining']
+# 3-gram or 4-gram yield good perf in anti-spam filtering
+
+# we can change this property using the ngram_range(2,2)
+# parameter while initializing CountVectorizer
+
+
+The are some useless words, like for example 'is' in this example :
+
+docs = np.array([
+		'The sun is shining',
+		'The weather is sweet',
+		'The sun is shining and the weather is sweet'
+	])
+
+so to 'discard' those words that didn't bring much information, the
+main idea is to detect the frequency of appearance of those words,
+if it's appear very often it is much likely they didn't bring much
+information.
+
+To do this we use the :
+
+			term frequency-inverse document frequency (tf-idf)
+
+the tf-idf is defined as :
+
+
+
+			tf-idf(t,d) = tf(t,d) x idf(t,d)
+
+			where tf(t, d) is the term frequency of t in
+			document d
+			idf = log[ nd/(1 + df(d,t) ) ] (definition)
+			where nd is the total number of document.
+
+see bag_of_words_example.py for scikit_implementation
+
+going back from bag_of_words_example.py :
+The equation of tf-idf in scikit-learn is :
+
+			idf(t,d) = log[ (1 +nd)/(1 + df(d,t)) ]
+			tf-idf(t,d) = tf(t,d) x ( idf(t, d) + 1)
+
+Note : 
+
+			TdfidfTransformer from scikit-learn normalizes
+			the tf-idfs directy (norm l2) by default.
+
+so if we uses our previous example :
+
+			docs = np.array([
+					'The sun is shining',
+					'The weather is sweet',
+					'The sun is shining and the weather is sweet'
+				])
+
+we have for example for is in document 3 :
+
+			The word 'is' has a term frequency of 2 (tf=2) in doc3
+			and the doc frequency of this term is 3 since the term
+			'is' occurs in all three document (df = 3), so :
+
+			df('is', d3) = log((1+3)/(1+3)) = 0
+
+			and :
+
+			tf-idf('is', d3) = 2 x (0 + 1) = 2
+
+
+We do that for all the words in the 3rd doc, we get :
+
+			[1,69, 2,00, 1.29, 1.29, 1.29, 2.00, 1.29]
+
+			we normalize ( norm n2) :
+
+			[0.4, 0.48, 0.31, 0.31, 0.31, 0.48, 0.31]
+
+

@@ -1,0 +1,10 @@
+Random forest regression is better than decision tree reg because it make
+use of multiple decision trees. Random forest are less sensitive to
+outliers and don't require much param tuning besides the number of
+decision trees. The implementation looks like the one from ch3.
+
+The only difference is that we use the MSE criterion to grow the
+individual decision trees, and the predicted target variable is
+calculated as the average prediction over all decision trees.
+
+see random_forest.py for the implementation

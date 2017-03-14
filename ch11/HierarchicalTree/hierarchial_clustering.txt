@@ -1,0 +1,30 @@
+hierarchical clustering algorihm allows us to plot dendrograms
+(visualizations of a binary hierarchical clustering) which can help
+with the interpretation of the results by creating meaningful
+taxonomies.
+
+Another advantage is that we do not need to provide the nb of cluster
+a priori.
+
+2 approaches :
+	- divisive : start with one cluster and iteratively split the cluster
+	  into smaller clusters until each cluster only contains one sample
+
+	- agglomerative : start with each sample as an individual cluster
+	  and merge the closest pairs of clusters until only one cluster
+	  remains
+
+2 ways of linkage (see p326):
+	- single linkage
+	- complete linkage
+	- ...also average linkage and ward's linkage
+
+
+steps for agglomerative clustering using complete linkage approach :
+
+	1 - Compute the distance matrix of all samples.
+	2 - Represent each data point as a singleton cluster.
+	3 - Merge the two closest clusters based on the distance of
+		the most dissimilar (distant) members.
+	4 - Update the similarity matrix.
+	5 - Repeat steps 2 to 4 until one single cluster remains.

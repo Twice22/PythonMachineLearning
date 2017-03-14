@@ -1,0 +1,15 @@
+we will make use of ensemble learning and we will deal with the
+majority voting principle. Majority voting means we select the
+class label that has been predicted by the majority of classifiers.
+
+majority vote refers to binary class. When we are dealing we multi-
+class settings we're talking about plurality voting. in pluracity
+voting we select the class label that received the most votes (MODE)
+
+How to works ? See p200
+
+	- We use several different classifiers : SVM, LR, ...
+
+	- we train them and make prediction
+
+	- We select the class label that receive the most vote

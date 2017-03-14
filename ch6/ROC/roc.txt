@@ -1,0 +1,17 @@
+roc stands for Receiver Operator Characteristic. It's a useful tool
+for selecting models for classification based on their performance
+with respect to the false positive and true positive rates.
+
+The diagonal of a ROC graph can be interpreted as random guessing,
+and classification models that fall below the diagonal are
+considered as worse than random guessing.
+
+A perfect classifier would fall into the top-left corner of the
+graph with a true positive rate of 1 and a false positive rate of 0.
+
+Based on the ROC curve we can then compute the AUC (area under 
+curve) to KR the performance of a classification model.
+
+similarly we can use precision-recall curves which are implemented
+in scikit-learn
+

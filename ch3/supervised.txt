@@ -1,0 +1,1 @@
+All those algorithms are supervised learning algorithms

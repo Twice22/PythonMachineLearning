@@ -1,0 +1,30 @@
+Linear regression models can be heavily impacted by the presence of
+outliers. In certain situations, a very small subset of our data can
+have a big effect on the estimated model coeff. There are methods to
+put ouliers away but it required our analysis as a data scientist.
+
+We can also make use of the RANSAC (RANdil SAloke Consensus)
+algorithm which fits a reg model to a subset of the data :
+The steps are :
+	
+	1 - Select a random number of samples to be inliers and fit the
+		model
+
+	2 - Test  all other data points against the fitted model and add
+		those pts that fall within a user-given tolerance to the
+		inliers
+
+	3 - Refit the model using all inliers
+
+	4 - Estimate the error of the fitted model versus the inliers
+
+	5 - Terminate the algorithm if the performance meets a certain
+		user-defined threshold or if a fixed number of iterations
+		has been reached; go back to step 1 otherwise.
+
+
+Note : using RANSAC, we reduced the potential effect of the outliers
+in the dataset but we don't know if this approach has a positive
+effect on the predictive performance for unseen data. we need to
+further discuss how to evaluate a regresion model for different
+approaches.

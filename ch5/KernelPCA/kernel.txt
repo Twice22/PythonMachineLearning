@@ -1,0 +1,83 @@
+﻿We gonna learn how to transform data that is not linearly separable
+onto a new, lower-dimensional subspace that is suitable for linear
+classifiers (see p148)
+
+As seen in Ch3, we can tackle nonlinear problems by projecting them
+onto a new feature space of higher dimensionality where the classes
+become LINEARLY separable :
+
+			ɸ : Rd --> Rk (k >> d)
+
+	for example with d = 2, k = 3 we could have
+
+			ɸ : x = [x1, x2]T --> z = [x1², sqrt(2.x1.x2), x2²]T
+
+So the principle is to perform this transformation and then use
+standard PCA in the k-dim space to project the data back onto a
+lower-dim space.... But it is obviously COMPUTATIONNALY EXPENSIVE
+
+So we are using the kernal trick !!
+
+
+for the PCA we had to compute the covariance between 2 features
+k and j :
+
+		σ(jk) = 1/n * Σ(xj(i) - μj)(xk(i) - μk)
+
+As we standardize the features at mean 0 we get :
+
+		σ(jk) = 1/n * Σ( xj(i) * xk(i) ) :
+
+
+the covariance matrice is just :
+
+		Σ = 1/n * Σ( x(i) * x(i)T )
+
+And it has been proved that we can replace using phi :
+
+		Σ = 1/n * Σ( ɸ[x(i)] * ɸ[x(i)]T )
+
+We solve Σλ = λv to have the eigenvectors, we get :
+
+		1/n * K * a = λ * a
+
+		where K = ɸ(X)ɸ(X)T
+
+Where K is a similarity function... So we don't need to compute
+λ, we just need to compute K = ɸ(X)ɸ(X)T...
+
+
+so the step using the kernel trick are :
+
+	1 - We compute the kernel (similarity) matrix k :
+		k(x(i), x(j)) = exp(-y|| x(i) - x(j) ||²)
+
+		if our dataset contain 100 training example, K is 100x100
+
+	2 - We center the kernel matrix K using :
+
+		K' = K - 1nK - K1n + 1nK1n
+
+		where 1n is an nxn matrix where all value are 1/n
+
+	3 - we collect the top k eigenvectors base on the magnitude of
+		their corresponding eigenvalues.
+
+
+
+How to project new data points ?
+
+For PCA it was straighforward because we obtained the k eigenvectors
+from the COVARIANCE matrix. So it has a sense to project the new
+test data onto those new eigenvectors.
+
+But for the Kernel PCA, we obtain an eigenvector (a) from the
+centered kernel matrix. Which means that those samples are already projected onto the principal component axis v (the k eigenvectors) :
+		
+		v = λ * ɸ(X)T * a
+
+thus to project a new sample x' onto this principal component axis
+we need to compute :
+
+		ɸ(X')T * v = Σ ( a(i) * k(x',x(i)).T )
+

@@ -1,0 +1,30 @@
+in boosting, the ensemble consists of very simple base classifiers,
+also often referred to as weak learners that have only a slight
+performance advantage over random guessing.
+
+A typical eample of a weak learner would be a decision tree stump.
+
+The key concept is to focus on training samples that are hard to
+classify, that is, to let the weak learners subsequently learn from
+misclassified training samples to improve the performance of the
+ensemble.
+
+Original boosting procedure is summarized in 4 keys steps :
+	
+	1. Draw a random subset of training samples d1 without
+	replacement from the training set D to train a weak learner C1.
+
+	2. Draw a second random training subset d2 without replacement
+	from the training set and add 50 % of the samples that were
+	previously misclassified to train a weak learner C2.
+
+	3. Find the training samples d3 in the training set D on which
+	C1 and C2 disagree to train a third weak learner C3
+
+	4. Combine the weak learners C1, C2 and C3 via majority voting
+
+
+In practise, boosting algo like AdaBoost are also known for their
+high variance, that is the tendency to overfit the training data
+
+see p225/226 to learn more about Boosting

@@ -1,0 +1,25 @@
+knn stands for k-nearest neighbors ( a lazy learning algo)
+It is call lazy because it belongs to the nonparametric model
+(the algo doesn't estimate parameters from training dataset to
+learn a function that can classify new data), and it is a :
+instance-based learning that is to say that it is KR by
+memorizing the training dataset...
+
+the knn works this way :
+	- Choose the number of k and a distance metric.
+	- Find the k nearest neighbors of the sample that we
+	want to classify
+	- assign the class label by majority vote.
+
+	See p93
+
+drawback : the complexity increase linearly with the size of the dataset
+
+curse of dimensionality :
+The curse of dimensionality describes the phenomenon where the feature space becomes increasingly sparse for an increasing number
+of dimensions of a fixed-size training dataset. Intuitively, we
+can think of even the closest neighbors being too far away in a
+high-dimensional space to give a good estimate.
+
+As we cannont use regularization (not a parametric algo). We need
+to use dimensionality reduction. see next chapter

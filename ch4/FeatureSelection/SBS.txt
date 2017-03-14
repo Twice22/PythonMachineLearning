@@ -1,0 +1,18 @@
+Sequential feature selection algorithms are a family of greedy
+search algorithms that are used to reduce an initial d-dimensional
+feature space to a k-dimensional feature subspace where k < d.
+
+A classic sequential feature selection algorithm is Sequential
+Backward Selection (SBS). SBS is quite simple. We just remove a
+feature from the full feature subset and we check the difference
+in performance and we keep going on like that. Here are the steps :
+
+	- Initialize the algorithm with k = d, d being the dimensionality of the full feature space Xd
+
+	- Determine the feature x- that maximizes x- = argmaxJ(Xk -x)
+	where x € Xk
+
+	- Remove the feature x- from the feature set
+
+	- Terminate if k equals the number of desired features, if not
+	go to stop 2.

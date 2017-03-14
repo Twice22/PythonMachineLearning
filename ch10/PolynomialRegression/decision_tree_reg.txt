@@ -1,0 +1,24 @@
+if you need to remember how to use the decision tree algo, see ch3.
+We use for example entropy as a measure of impurity to determine
+which features plot maximizes the Information Gain IG :
+
+	IG(Dp, x) = I(Dp) - (Nleft/Np)*I(Dleft) - (Nright/Np)*I(Dright)
+
+here, x is the feature to perform the split, Np is the number of
+samples in the parent node, I is the impurity function, Dp is the
+subset of training samples in the parent node, and Dleft and Dright are
+the subsets of training samples in the left and right child node after
+the split
+
+To use a decision tree for regression, we will replace entropy as the
+impurity measure of a node t by the MSE (see p304) :
+
+	I(t) - MSE(t) = 1/Nt * Σ(y(i) - ŷt)²
+
+Where Nt is the number of training samples at node t, Dt is the
+training subset at node t, y(i) is the true target value, and ŷ(i)
+is the predicted target value (sample mean):
+	
+	ŷt = 1/N * Σ y(i)
+
+see the python implementation in decision_tree_reg.py

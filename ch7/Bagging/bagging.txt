@@ -1,0 +1,8 @@
+Bagging works a bit like MajorityVoting besides that fact that in
+bagging instead of using the same training set to fit the individual
+clasifiers in the ensemble, we draw bootstrap samples (random
+samples with replacement) from the initial training set. see p220
+
+Bagging algorithm can be an effective approach to reduce the
+variance of a model. However bagging is ineffective in reducing
+model bias.

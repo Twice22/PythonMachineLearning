@@ -1,0 +1,15 @@
+in typical machine learning problem we are interested in having
+the best model possible. However, some learning algorithm depends
+on hyperparameter ( Ɣ, λ an so on). So we generally have to split
+the dataset into 3 parts :
+
+	- training dataset : to train our model
+	- model selection : to find the best parameter that will fit
+						to our training dataset
+	- test dataset : it evaluate the performs on a still unseen
+					 dataset.
+
+Indeed, if we use the same test dataset in the model selection,
+and in the final step, it is obvious that the test dataset will
+be part of our training data and thus the model will be likely to
+overfit !!

@@ -1,0 +1,18 @@
+In unsupervised learnings we do not know the definitive answer.
+We don't have the ground truth class labels in our dataset that
+allow us to directly measure the rate of error of our algorithm.
+
+To quantify the quality of clustering, we need to use intrinsic
+metrics, such as the within-cluster SSE (distorsion)
+
+in scikit we access this param with inertia_ attribute :
+
+print('Distorsion: %.2f' % km.inertia_)
+
+
+based on the within-cluster SSE, we can use a graphical tool, the elbow
+method, to estimate the optimal nb of clusters k for a given task.
+Intuitively, we can say that, if k increases, the distortion will
+decrease. This is because the samples will be closer to the centroids
+they are assigned to. The idea behind the elbow method is to identify
+the value of k where the distortion begins to increase most rapidly.

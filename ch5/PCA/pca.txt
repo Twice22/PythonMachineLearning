@@ -1,0 +1,20 @@
+pca stands for Principal component analysis and is an unsupervised
+learning transformation technique that allows to transfrome a d
+dimensional space into a k dimensional subspace (k < d). Here is how
+it works :
+
+	1 - Standardize the d-dimensional dataset (feature having same scale)
+
+	2 - Construct the covariance matrix
+
+	3 - Decompose the covariance matrix into its eigenvectors and
+	eigenvalues.
+
+	4 - Select k eigenvectors that correspond to the k largest
+	eigenvalues, where k is the dimensionality of the new feature
+	subspace (k <= d)
+
+	5 - Construct a projection matrix W from the "top" k eigenvectors.
+
+	6 - Transform the d-dimensional input dataset X using the projection matrix W to obtain the new k-dim feature subspace :
+	z = xW.

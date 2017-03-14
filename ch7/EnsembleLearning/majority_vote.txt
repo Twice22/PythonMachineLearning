@@ -1,0 +1,27 @@
+We gonna implement a majority voting to combine different 
+classification algorithms associated with individual weights
+for confidence. See equation p203
+
+The principle is to take the max arg of the weighted base classifier
+we gonna choose the weight of confidence using the probability that
+a classifier belongs to a specific class.
+
+first, to translate the concept of the weighted majority vote into
+Python code, we can use Numpy's convenient argmax and bincount fct :
+
+import numpy as np
+# A possible use of bincount is to perform sums over variable-size
+# chunks of an array
+np.argmax(np.bincount([0, 0, 1], weights=[0.2, 0.2, 0.3]))
+
+
+using the probabilty of the classifier to belong to class 1 or 0
+as the weights we can come up with :
+
+# first col : probability to be class 1, 2nd col proba to be C0
+ex = np.array([[0.9, 0.1], [0.8, 0.2], [0.4, 0.6]])
+# average ex along axis 0 with weights
+p = np.average(ex, axis=0, weights=[0.2, 0.2, 0.6])
+# p : array([0.58, 0.42])
+np.argmax(p)
+# return : 0

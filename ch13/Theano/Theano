@@ -1,0 +1,29 @@
+Theano is a tool designed to train machine learning models most
+effectively using Python.
+
+By default, Python is limited to execution on one core, due to the
+Global Interpreter Lock (GIL). However, even if we take advantage of
+its multiprocessing library to distribute computations over multiple
+cores, we usually don't have more than 8 cores...
+
+So the solution is to rely on the GPU rather than the CPU. Moreover
+GPUs are relatively cheap compared to the state-of-the-art CPUs. For
+example Graphic Card can easily have 400 times more core than CPU and
+up to 15 (or more) floating-point calculations per second.
+The problem is that we need our code to target the GPU which is not
+trivial (can use CUDA, OpenCL). This is what Theano was developed for !
+
+Theano is both a programming language, a compiler and a Python lib.
+It is developed to implement, compile and evaluate mathematical expr
+very efficiently with a strong focus on multidimensional arrays. It
+is much faster than Numpy. It uses C/C++ implementation or CUDE/OpenCL
+if we want to run it on the GPU.
+
+to learn more about Theano :
+http://deeplearning.net/software/theano/
+
+
+To install Theano : pip install Theano
+
+system and platform specific recommendations : http://deeplearning.net/software/theano/install.html
+
