@@ -1,5 +1,9 @@
 # Python Machine Learning with python files (not .ipynb)
 
-I rewrite all the code from Python Machine Learning book annoting it with comments.
-All the files are pure .py files and not .ipynb (iPython notebook files). Don't
-hesitate to check the repository of this great book here : https://github.com/rasbt/python-machine-learning-book
+## Information
+I rewrote all the code from the book _Python Machine Learning_ using .py files instead of
+Jupyter notebook (.ipynb files). I also commented all the code so everybody can understand
+what each piece of codes is doing.
+
+## Source
+The original GitHub repository is available [here](https://github.com/rasbt/python-machine-learning-book "Original repository for Python Machine Learning book")
